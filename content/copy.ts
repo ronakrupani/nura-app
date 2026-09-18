@@ -1,5 +1,9 @@
 export const wordmark = "Nura";
 
+export const home = {
+  signIn: "Caregiver sign in",
+};
+
 export const disclaimer =
   "Nura is not a medical device and does not provide medical advice.";
 

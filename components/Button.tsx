@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { ComponentPropsWithoutRef } from "react";
 
 type Variant = "primary" | "secondary";
@@ -38,5 +39,20 @@ export function Button({
     >
       {loading ? loadingLabel : children}
     </button>
+  );
+}
+
+type LinkButtonProps = ComponentPropsWithoutRef<typeof Link> & {
+  variant?: Variant;
+};
+
+/** A link that looks like a button. For navigation, not for actions. */
+export function LinkButton({
+  variant = "primary",
+  className = "",
+  ...props
+}: LinkButtonProps) {
+  return (
+    <Link className={`${BASE} ${VARIANTS[variant]} ${className}`} {...props} />
   );
 }
