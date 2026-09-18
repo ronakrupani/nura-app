@@ -34,6 +34,8 @@ const config: Config = {
         12: "48px",
         16: "64px",
         24: "96px",
+        // The one value outside the step scale: an input's horizontal padding.
+        field: "14px",
       },
       borderRadius: {
         sm: "6px",
