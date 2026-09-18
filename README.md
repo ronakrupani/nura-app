@@ -22,7 +22,7 @@ Only the front of the door.
   nothing is stored, and there is no session. The comment
   `TODO: replace with Supabase auth call` marks where the real call goes.
 - `/care`, a placeholder with a sign-out button that returns to `/login`.
-- `/`, a placeholder for the patient screen.
+- `/`, a placeholder for the patient screen, with a button through to `/login`.
 
 There is no backend, no authentication, no database and no API route yet.
 
