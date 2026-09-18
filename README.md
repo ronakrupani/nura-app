@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nura
 
-## Getting Started
+Nura is a voice companion for people living with dementia. Their family writes
+the answers Nura is allowed to give, and Nura shares them exactly as written,
+as gently the fortieth time as the first.
 
-First, run the development server:
+This is the app, not the marketing site. It has two sides: the person with
+dementia gets a near-empty screen with one large button and never signs in,
+and their family member signs in to write the answers and manage settings.
+
+## What is built so far
+
+Only the front of the door.
+
+- The design foundation: colour, spacing and radius tokens in
+  `tailwind.config.ts`, the type scale as utility classes in `globals.css`,
+  Newsreader for headings and Figtree for everything else.
+- Two shared components, `Button` and `Input`, in `components/`.
+- `/login`, one page that toggles between signing in and creating an account.
+  Validation is client-side and shows one problem at a time. A valid submit
+  shows a loading state and navigates to `/care`. Nothing is sent anywhere,
+  nothing is stored, and there is no session. The comment
+  `TODO: replace with Supabase auth call` marks where the real call goes.
+- `/care`, a placeholder with a sign-out button that returns to `/login`.
+- `/`, a placeholder for the patient screen.
+
+There is no backend, no authentication, no database and no API route yet.
+
+## Run it
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open <http://localhost:3000/login>.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build   # production build
+npm run start   # serve it
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Where things are
 
-## Learn More
+```
+app/
+  layout.tsx          fonts and metadata
+  globals.css         type scale, focus ring, reduced motion
+  page.tsx            /        patient screen placeholder
+  login/page.tsx      /login   sign in and sign up
+  care/page.tsx       /care    caregiver placeholder
+components/
+  Button.tsx
+  Input.tsx
+  AuthShell.tsx       the single centred column both pages share
+  LoginForm.tsx
+  SignOutButton.tsx
+  Wordmark.tsx
+content/
+  copy.ts             every string on every page
+tailwind.config.ts    the whole colour, spacing and radius system
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Nura is not a medical device and does not provide medical advice.
